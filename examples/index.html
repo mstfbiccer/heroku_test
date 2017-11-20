@@ -1,0 +1,731 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png" />
+    <link rel="icon" type="image/png" href="assets/img/favicon.png" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>MONGO DB</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+    <!-- Bootstrap core CSS     -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <!--  Material Dashboard CSS    -->
+    <link href="assets/css/material-dashboard.css?v=1.2.0" rel="stylesheet" />
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="assets/css/demo.css" rel="stylesheet" />
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
+    <link href='custom.css' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+    <div class="overlay"></div>
+    <div class="wrapper">
+        <div class="sidebar" data-color="red" data-image="assets/img/sidebar-1.jpg">
+            <!--
+        Tip 1: You can change the color of the sidebar using: data-color="red | blue | green | orange | red"
+
+        Tip 2: you can also add an image using data-image tag
+    -->
+            <div class="logo">
+                <a href="#" class="simple-text">
+                    MONGO DB PANEL
+                </a>
+            </div>
+            <div class="sidebar-wrapper">
+                <ul class="nav">
+
+                    <li class="active">
+                        <a href="#">
+                            <i class="material-icons">content_paste</i>
+                            <p>QUERIES</p>
+                        </a>
+                    </li>
+
+                    <li class="active">
+                        <a href="#" id="dbSettingBtn" style="background-color: #337ab7;">
+                            <i class="material-icons">content_paste</i>
+                            <p>DB SETTINGS</p>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="#" id="setDataBtn" style="background-color: #350dcc;">
+                            <i class="material-icons">content_paste</i>
+                            <p>IMPORT</p>
+                        </a>
+                    </li>
+                    <li class="active">
+                            <a href="#" id="getDataModel" style="background-color: #000000;">
+                                <i class="material-icons">content_paste</i>
+                                <p>DATA MODEL</p>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="#" id="insertPanel" style="background-color: #1c8229;">
+                                <i class="material-icons">content_paste</i>
+                                <p>INSERT DATA</p>
+                            </a>
+                        </li>
+                </ul>
+            </div>
+        </div>
+        <div class="main-panel">
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row col-md-12">
+
+
+                                <div class="col-md-8 col-xs-10">
+                                    <li class="dropdown">
+                                        <a href="#" id="mainlist" class="keys-dropdown dropdown-toggle btn btn-secondary pull-center" style="background-color: #337ab7;" data-toggle="dropdown"
+                                            aria-expanded="false">title<div class="ripple-container"></div></a>
+                                        <ul class="dropdown-menu " id="keys">
+                                            <li>
+                                                <a href="#" class="drop-item">id<div class="ripple-container"></div></a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="drop-item">titles<div class="ripple-container"></div></a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="drop-item">image</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="drop-item">types</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="drop-item">year</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="drop-item">director<div class="ripple-container"></div></a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="drop-item">writers</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="drop-item">actors</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="drop-item">audience</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="drop-item">description</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="drop-item">long_description</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="drop-item">countries</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="drop-item">languages</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="drop-item">companies</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="drop-item">time</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="drop-item">imdb_rate</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="drop-item selected">title</a>
+                                            </li>
+
+
+                                        </ul>
+                                    </li>
+                                    <div class="form-group label-floating is-empty value-class">
+                                        <label class="control-label">VALUE</label>
+                                        <input type="text" id="dataValue" class="form-control">
+                                        <span class="material-input"></span><span class="material-input"></span><span class="material-input"></span>
+                                        <span class="material-input"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-xs-12"><button type="button" class="btn btn-secondary pull-center" style="float:right;background: #337ab7;"
+                                        onclick="formClear();">RESET<div class="ripple-container"></div></button>
+                                    <button type="submit" class="btn btn-secondary pull-center" id="getData" style="float:right">GET DATA
+                                        <div class="ripple-container"></div>
+                                        </button>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-header" data-background-color="red">
+                                        <h4 class="title">Results (0)</h4>
+                                    </div>
+                                    <div class="card-content table-responsive">
+                                        <table class="table">
+                                            <thead class="text-primary" style="color: #e73d39;">
+                                                <tr id="first-column" style="display:none;">
+                                                    <th>ACTIONS</th>
+                                                    <th>ID</th>
+                                                    <th>TITLE</th>
+                                                    <th>DIRECTOR</th>
+                                                    <th>TYPES</th>
+                                                    <th>YEAR</th>
+                                                    <th><i class="material-icons">query_builder</i></th>
+                                                    <th><i class="material-icons">star_border</i></th>
+                                                    <th><i class="material-icons">announcement</i></th>
+
+
+                                                </tr>
+                                            </thead>
+                                            <tbody id="dataList">
+
+                                            </tbody>
+                                        </table>
+                                        <button type="submit" class="btn btn-primary pull-center raw-btn" id="getRaw">Show Raw Data</button>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+</body>
+<!--   Core JS Files   -->
+<script src="assets/js/jquery-3.2.1.min.js" type="text/javascript"></script>
+<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="assets/js/material.min.js" type="text/javascript"></script>
+<!--  Charts Plugin -->
+<script src="assets/js/chartist.min.js"></script>
+<!--  Dynamic Elements plugin -->
+<script src="assets/js/arrive.min.js"></script>
+<!--  PerfectScrollbar Library -->
+<script src="assets/js/perfect-scrollbar.jquery.min.js"></script>
+<!--  Notifications Plugin    -->
+<script src="assets/js/bootstrap-notify.js"></script>
+<!--  Google Maps Plugin    -->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+<!-- Material Dashboard javascript methods -->
+<script src="assets/js/material-dashboard.js?v=1.2.0"></script>
+<!-- Material Dashboard DEMO methods, don't include it in your project! -->
+<script src="assets/js/demo.js"></script>
+<script>
+    window.dbConfig = {
+        "db_name": "moviedb23ekim",
+        "model": "Movie"
+    };
+    window.dataModel = 
+        {
+        "id":"STRING",
+        "title": "STRING",
+        "titles":"ARRAY (ex:['a','b'])",
+        "image":"STRING",
+        "types":"ARRAY (ex:['a','b'])",
+        "year":"STRING",
+        "director":"STRING",
+        "writers":"ARRAY (ex:['a','b'])",
+        "actors":[
+            {
+            "name":"STRING",
+            "character":"STRING",
+            "image":"STRING"
+            }
+        ],
+        "audience":"STRING",
+        "description":"STRING",
+        "long_description":"STRING",
+        "countries":"ARRAY (ex:['a','b'])",
+        "languages":"ARRAY (ex:['a','b'])",
+        "companies":"ARRAY (ex:['a','b'])",
+        "time":"STRING",
+        "imdb_rate":"STRING"
+        };
+    jQuery('#getDataModel').click(function() {
+        jQuery("#rawPopup").show();
+        jQuery(".overlay").show();
+        jQuery("#rawTextarea").val(JSON.stringify(window.dataModel));
+        jQuery(".closeBtn").click(function () {
+            jQuery("#rawPopup").hide();
+            jQuery(".overlay").hide();
+        });
+    });
+    jQuery("#getRaw").click(function () {
+        jQuery("#rawPopup").show();
+        jQuery(".overlay").show();
+        jQuery("#rawTextarea").val(JSON.stringify(window.rawData));
+        jQuery(".closeBtn").click(function () {
+            jQuery("#rawPopup").hide();
+            jQuery(".overlay").hide();
+        });
+    })
+
+    function formClear() {
+        document.location.reload();
+    }
+    jQuery("#keys .drop-item").click(function () {
+        jQuery("#keys .drop-item").each(function () {
+            jQuery(this).removeClass("selected");
+        })
+
+        jQuery(this).addClass("selected");
+        jQuery(".keys-dropdown .dropdown-toggle").text(jQuery("#keys .drop-item.selected").text())
+    })
+
+    jQuery("#getData").click(function (event) {
+        jQuery("#first-column").hide();
+        jQuery("body").css("cursor", "wait");
+        event.preventDefault();
+        jQuery("#dataList").each(function () {
+            jQuery(this).find("tr").remove();
+        });
+        jQuery.get("http://localhost:2019/api/get?key=" + jQuery(".drop-item.selected").text() + "&value=" + jQuery("#dataValue").val()+"&dbmdl="+window.dbConfig["db_name"], function (data) {
+            jQuery(".card-header .title").text("Results (" + 0 + ")");
+            jQuery("#getRaw").hide();
+            for (var i = 0; i < data.length; i++) {
+                var tr = jQuery("<tr/>");
+                jQuery("#dataList").append(tr);
+                jQuery(tr).append("<td> <i class='material-icons' onclick='getDetail(" + i + ")'>code</i><i class='material-icons' onclick='removeData(" + i + ")'>delete_forever</i><i class='material-icons' onclick='exportRow(" + i + ")'>file_download</i></td>");
+                jQuery(tr).append("<td>" + data[i].id + "</td>");
+                jQuery(tr).append("<td>" + data[i].title.trim() + "</td>")
+                jQuery(tr).append("<td>" + data[i].director + "</td>")
+                jQuery(tr).append("<td>" + data[i].types + "</td>")
+                jQuery(tr).append("<td>" + data[i].year + "</td>")
+                jQuery(tr).append("<td>" + data[i].time + "</td>")
+                jQuery(tr).append("<td>" + data[i].imdb_rate + "</td>")
+                jQuery(tr).append("<td>" + (data[i].audience ? data[i].audience : '') + "</td>")
+                jQuery(".card-header .title").text("Results (" + (i + 1) + ")");
+                window.rawData = data;
+                jQuery("#rawTextarea").val(JSON.stringify(window.rawData));
+                jQuery("#getRaw").show();
+                jQuery("body").css("cursor", "pointer");
+                jQuery("#first-column").show();
+            }
+            jQuery("body").css("cursor", "pointer");
+        });
+    });
+    function getDetail(index) {
+        console.log(window.rawData[index]);
+        jQuery("#rawTextarea").val(JSON.stringify(window.rawData[index]));
+        jQuery("#rawPopup").show();
+        jQuery(".overlay").show();
+        jQuery(".closeBtn").click(function () {
+            jQuery("#rawPopup").hide();
+            jQuery("#dbSettingsPopup").hide();
+            jQuery("#dbSetDataPopup").hide();
+            jQuery(".overlay").hide();
+        });
+    }
+    function removeData(index) {
+        var txt;
+        var r = confirm("Are you sure?");
+        if (r == true) {
+            var id = window.rawData[index].id;
+            jQuery.get("http://localhost:2019/api/deletedata?id="+id+"&dbmdl="+window.dbConfig["db_name"], function (data) {
+                $.notify({
+                icon: "successr",
+                message: "Good job :) Clear DB :)"
+
+                }, {
+                    type: type[2],
+                    timer: 2000,
+                    placement: {
+                        from: "top",
+                        align: "center"
+                    }
+                    });
+                setTimeout(function() {
+                    jQuery("#getData").click();
+                },500)
+                
+        });
+        } else {
+            $.notify({
+                icon: "successr",
+                message: "No Fear !"
+
+                }, {
+                    type: type[2],
+                    timer: 2000,
+                    placement: {
+                        from: "top",
+                        align: "center"
+                    }
+                    });
+        }
+        }
+</script>
+<!-- RAW VIEW FORM -->
+<div class="card card-stats" id="rawPopup">
+    <div class="card-header closeBtn" data-background-color="red" style="float:right;cursor:pointer;">
+        <i class="material-icons">clear</i>
+    </div>
+    <div class="card-content">
+        <textarea class="form-control" id="rawTextarea" placeholder="" rows="5" style="height: 250px;"></textarea>
+        <button type="submit" class="btn btn-secondary pull-center" onclick="minify();">MINIFY</button>
+        <button type="submit" class="btn btn-secondary pull-center" onclick="beautify();">BEAUTIFY</button>
+        <button type="submit" class="btn btn-secondary pull-center" onclick="exportText();">EXPORT</button>
+        <button type="submit" class="btn btn-secondary pull-center" onclick="copyRawData();">COPY</button>
+
+    </div>
+</div>
+<!-- DB SETTINGS FORM -->
+<div class="card card-stats" id="dbSettingsPopup">
+    <div class="card-header" data-background-color="red" style="float:right;cursor:pointer;" onclick=" jQuery('#dbSettingsPopup').hide();jQuery('.overlay').hide();">
+
+        <i class="material-icons">clear</i>
+    </div>
+    <div class="card-header" style="background-color: #337ab7;color:#fff">
+        <ul class="nav">
+
+            <li class="active">
+                <a href="#" style="background-color: #337ab7;color:#fff">
+                            <i class="material-icons">content_paste</i>
+                            <p>DB SETTINGS</p>
+                        </a>
+            </li>
+
+        </ul>
+       
+    </div>
+    <div class="card-content">
+        <div class="row" style="    margin-left: 34%;">
+            <div class="col-md-3 dropdown">
+                <a href="#" class="btn btn-simple dropdown-toggle " data-toggle="dropdown" aria-expanded="false" style="font-size: 25px;">
+	                        <img src="http://www.ferozitech.com/services/images/MongoDB.png" style="width: 50px;height:auto;">
+	                         MONGO DB
+	                         <b class="caret"></b>
+	                    <div class="ripple-container"></div></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#"> </a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row" style=" margin-left: 37%;">
+            <div class="col-md-4">
+            <li class="dropdown">
+                    <a href="#" class="db-list-dropdown dropdown-toggle btn btn-secondary pull-center" style="background-color: #337ab7;" data-toggle="dropdown"
+                        aria-expanded="false" id="first-db"><div class="ripple-container"></div></a>
+            <ul class="dropdown-menu " id="dblist">
+                    <li>
+                        <a href="#" class="drop-item">id<div class="ripple-container"></div></a>
+                    </li>
+                </ul>
+                </li>
+        </div>
+        <div class="row" style="margin-top: 20px;">
+            <div class="col-md-8">
+                    <button type="button" id="updateSettings" class="btn btn-secondary pull-center" style="background: #e8423e;position: absolute;margin-left: -79%;margin-top: 41%;">UPDATE<div class="ripple-container"></div></button>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+
+<!-- DB SET DATA FORM -->
+<div class="card card-stats" id="dbSetDataPopup" >
+    <div class="card-header" data-background-color="red" style="float:right;cursor:pointer;" onclick=" jQuery('#dbSetDataPopup').hide();jQuery('.overlay').hide();">
+
+        <i class="material-icons">clear</i>
+    </div>
+    <div class="card-header" style="background-color: #337ab7;color:#fff">
+        <ul class="nav">
+
+            <li class="active">
+                <a href="#" style="background-color: #337ab7;color:#fff">
+                            <i class="material-icons">content_paste</i>
+                            <p>IMPORT</p>
+                        </a>
+            </li>
+        </ul>
+    </div>
+    <div class="card-content">
+        <div class="row" style=" margin-left: 37%;">
+            <div class="col-md-4" id="jsonList">
+                <div class="form-group label-floating is-empty">
+                    <input type="text" placeholder="JSON URL"  id="json-url" class="form-control">
+                    <span class="material-input"></span><span class="material-input"></span></div>
+               
+                <div class="form-group label-floating is-empty" id="db-name-set">
+                        <input type="text"  placeholder="DB Name" class="form-control">
+                        <span class="material-input"></span><span class="material-input"></span></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+                <button type="button" id="set-data-btn" class="btn btn-secondary" style="
+                width: 200px;
+                position: absolute;
+                left: 44%;
+                top: 80%;
+                ">IMPORT<div class="ripple-container"></div></button>
+        </div>
+        <script>
+                jQuery("#set-data-btn").click(function() {
+                    // set data
+                    jQuery.get("http://localhost:2019/api/setdata?url=" + jQuery("#json-url").val() + "&dbmdl="+jQuery("#db-name-set input").val(),function(data) {
+                        jQuery("#dbSetDataPopup").hide();
+                        jQuery(".overlay").hide();
+                        $.notify({
+                        icon: "successr",
+                        message: "Ok ! :) "
+
+                        }, {
+                            type: type[2],
+                            timer: 2000,
+                            placement: {
+                                from: "top",
+                                align: "center"
+                            }
+                            });
+
+                    });     
+                });
+            window.jsonCounter=0;
+            jQuery("#add-json-url").click(function() {
+                try {
+                    if(window.jsonCounter < 2) {
+                        var strVar="";
+                        strVar += "<div class=\"form-group label-floating is-empty\">";
+                        strVar += "<input type=\"text\" placeholder=\"JSON URL\" class=\"form-control\">";
+                        strVar += "<span class=\"material-input\"><\/span><span class=\"material-input\"><\/span><\/div>";
+                        strVar += "<\/div>";
+                        jQuery("#db-name-set").before(strVar);
+                        window.jsonCounter++;
+                    }else {
+                        $.notify({
+                            icon: "error",
+                            message: "Max JSON : 3"
+
+                        }, {
+                                type: type[0],
+                                timer: 2000,
+                                placement: {
+                                    from: "top",
+                                    align: "center"
+                                }
+                            });
+                    }
+                   
+                }catch(err) {}
+            });
+        </script>
+    </div>
+</div>
+<!-- finish -->
+
+<!-- INSERT PANEL CART -->
+
+<div class="card card-stats" id="insertPanelPopup" >
+    <div class="card-header" data-background-color="red" style="float:right;cursor:pointer;" onclick=" jQuery('#insertPanelPopup').hide();jQuery('.overlay').hide();">
+
+        <i class="material-icons">clear</i>
+    </div>
+    <div class="card-header" style="background-color: #337ab7;color:#fff">
+        <ul class="nav">
+
+            <li class="active">
+                <a href="#" style="background-color: #337ab7;color:#fff">
+                            <i class="material-icons">content_paste</i>
+                            <p>INSERT DATA</p>
+                        </a>
+            </li>
+        </ul>
+    </div>
+    <div class="card-content">
+        <div class="row" style=" margin-left: 37%;">
+                <div class="col-md-4">
+                        <textarea class="form-control" id="insertModal" placeholder="" rows="5" style="height: 750px;width:200px;font-size:14px;font-weight:bold"></textarea>
+                </div>
+        </div>
+        <div class="row">
+                <button type="button" id="insert-data-btn" class="btn btn-secondary" style="
+                width: 200px;
+                position: absolute;
+                left: 80%;
+                top: 90%;
+                ">INSERT DATA<div class="ripple-container"></div></button>
+        </div>
+        <script>
+        jQuery("#insert-data-btn").click(function() {
+            // set data
+            jQuery.get("http://localhost:2019/api/insertdata?insdata=" + jQuery("#insertModal").val()+"&dbmdl="+window.dbConfig["db_name"],function(data) {
+                jQuery("#insertModal").hide();
+                jQuery(".overlay").hide();
+                $.notify({
+                icon: "success",
+                message: "data insert ok :) "
+
+                }, {
+                    type: type[2],
+                    timer: 2000,
+                    placement: {
+                        from: "top",
+                        align: "center"
+                    }
+                    });
+                setTimeout(function() {
+                    window.location.reload();
+                },500)
+               
+            });     
+        });
+        </script>
+    </div>
+</div>
+
+<!-- INSERT PANEL FINISH -->
+<script>
+    function copyRawData() {
+        var copyText = document.getElementById("rawTextarea");
+        copyText.select();
+        document.execCommand("Copy");
+        jQuery("#rawPopup").hide();
+        jQuery(".overlay").hide();
+        $.notify({
+            icon: "success",
+            message: "Raw data copied."
+
+        }, {
+                type: type[2],
+                timer: 2000,
+                placement: {
+                    from: "top",
+                    align: "center"
+                }
+            });
+
+    }
+    function beautify() {
+        jQuery("#rawTextarea").val(JSON.stringify(JSON.parse(jQuery("#rawTextarea").val()), null, 2));
+    }
+    function minify() {
+        jQuery("#rawTextarea").val(JSON.stringify(JSON.parse(jQuery("#rawTextarea").val())));
+    }
+    function exportText() {
+        var textToWrite = jQuery("#rawTextarea").val();
+        var textFileAsBlob = new Blob([textToWrite], { type: 'text/plain' });
+        var fileNameToSaveAs = "export.json";
+        var downloadLink = document.createElement("a");
+        downloadLink.download = fileNameToSaveAs;
+        downloadLink.innerHTML = "Download File";
+        if (window.webkitURL != null) {
+            // Chrome allows the link to be clicked
+            // without actually adding it to the DOM.
+            downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+        }
+        else {
+            // Firefox requires the link to be added to the DOM
+            // before it can be clicked.
+            downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+            downloadLink.onclick = destroyClickedElement;
+            downloadLink.style.display = "none";
+            document.body.appendChild(downloadLink);
+        }
+        downloadLink.click();
+    }
+    function exportRow(rowNumber) {
+        jQuery("#rawTextarea").val(JSON.stringify(window.rawData[rowNumber]), null, 2);
+        var textToWrite = jQuery("#rawTextarea").val();
+        var textFileAsBlob = new Blob([textToWrite], { type: 'text/plain' });
+        var fileNameToSaveAs = "export_" + (rawData[rowNumber].title.replace(new RegExp(" ", 'g'), "_")) + ".json";
+        var downloadLink = document.createElement("a");
+        downloadLink.download = fileNameToSaveAs;
+        downloadLink.innerHTML = "Download File";
+        if (window.webkitURL != null) {
+            // Chrome allows the link to be clicked
+            // without actually adding it to the DOM.
+            downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+        }
+        else {
+            // Firefox requires the link to be added to the DOM
+            // before it can be clicked.
+            downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+            downloadLink.onclick = destroyClickedElement;
+            downloadLink.style.display = "none";
+            document.body.appendChild(downloadLink);
+        }
+        downloadLink.click();
+    }
+    function keypress(e) {
+        if (e.keyCode === 13) {
+            e.preventDefault(); // Ensure it is only this code that rusn
+
+            alert("Enter was pressed was presses");
+        }
+    }
+    jQuery("#dataValue").keypress(function (e) {
+        if (e.keyCode == 13) {
+
+            jQuery("#getData").click();
+        }
+    });
+    jQuery("#dbSettingBtn").click(function () {
+        jQuery("#dbSettingsPopup").show();
+        jQuery(".overlay").show();
+        jQuery("#first-db").text(window.dbConfig["db_name"]);
+        jQuery.get("http://localhost:2019/api/getdblist", function (data) {
+            jQuery("#dblist li").each(function(){
+                    jQuery(this).remove();
+                });
+            for(var i = 0;i<data.length;i++) {
+                if(data[i].name == window.dbConfig["db_name"]) {
+                    var strVar="";
+                    strVar += " <li>";
+                    strVar += "  <a href=\"#\" class=\"drop-item selected\">"+data[i].name+"<div class=\"ripple-container\"><\/div><\/a>";
+                    strVar += " <\/li>";
+                    jQuery("#first-db").text(data[i].name);
+                }else {
+                    var strVar="";
+                    strVar += " <li>";
+                    strVar += "  <a href=\"#\" class=\"drop-item\">"+data[i].name+"<div class=\"ripple-container\"><\/div><\/a>";
+                    strVar += " <\/li>";
+                }
+               
+                jQuery("#dblist").append(strVar);
+                console.log(data[i].name);
+            }
+            jQuery("#dblist .drop-item").click(function () {
+            jQuery("#dblist .drop-item").each(function () {
+                jQuery(this).removeClass("selected");
+            })
+            jQuery(this).addClass("selected");
+            jQuery(".db-list-dropdown").text(jQuery("#dblist .drop-item.selected").text())
+            })
+        });
+
+
+    });
+    jQuery("#insertPanel").click(function () {
+        jQuery("#insertPanelPopup").show();
+        jQuery(".overlay").show();
+        jQuery("#insertModal").val(JSON.stringify(window.dataModel, null, 2));
+    });
+    jQuery("#setDataBtn").click(function () {
+        jQuery("#dbSetDataPopup").show();
+        jQuery(".overlay").show();
+       
+    });
+    jQuery("#updateSettings").click(function() {
+        window.dbConfig["db_name"] = jQuery("#first-db").text();
+        jQuery("#dbSettingsPopup").hide();
+        jQuery("#dbSetDataPopup").hide();
+        jQuery(".overlay").hide();
+        $.notify({
+        icon: "successr",
+        message: "Updated successify :) "
+
+        }, {
+            type: type[2],
+            timer: 2000,
+            placement: {
+                from: "top",
+                align: "center"
+            }
+            });
+        });
+        
+
+</script>
+
+</html>
