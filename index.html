@@ -278,7 +278,7 @@
         jQuery("#dataList").each(function () {
             jQuery(this).find("tr").remove();
         });
-        jQuery.get("http://localhost:2019/api/get?key=" + jQuery(".drop-item.selected").text() + "&value=" + jQuery("#dataValue").val()+"&dbmdl="+window.dbConfig["db_name"], function (data) {
+        jQuery.get("https://null-server.herokuapp.com/api/get?key=" + jQuery(".drop-item.selected").text() + "&value=" + jQuery("#dataValue").val()+"&dbmdl="+window.dbConfig["db_name"], function (data) {
             jQuery(".card-header .title").text("Results (" + 0 + ")");
             jQuery("#getRaw").hide();
             for (var i = 0; i < data.length; i++) {
@@ -320,7 +320,7 @@
         var r = confirm("Are you sure?");
         if (r == true) {
             var id = window.rawData[index].id;
-            jQuery.get("http://localhost:2019/api/deletedata?id="+id+"&dbmdl="+window.dbConfig["db_name"], function (data) {
+            jQuery.get("https://null-server.herokuapp.com/api/deletedata?id="+id+"&dbmdl="+window.dbConfig["db_name"], function (data) {
                 $.notify({
                 icon: "successr",
                 message: "Good job :) Clear DB :)"
@@ -463,7 +463,7 @@
         <script>
                 jQuery("#set-data-btn").click(function() {
                     // set data
-                    jQuery.get("http://localhost:2019/api/setdata?url=" + jQuery("#json-url").val() + "&dbmdl="+jQuery("#db-name-set input").val(),function(data) {
+                    jQuery.get("https://null-server.herokuapp.com/api/setdata?url=" + jQuery("#json-url").val() + "&dbmdl="+jQuery("#db-name-set input").val(),function(data) {
                         jQuery("#dbSetDataPopup").hide();
                         jQuery(".overlay").hide();
                         $.notify({
@@ -549,7 +549,7 @@
         <script>
         jQuery("#insert-data-btn").click(function() {
             // set data
-            jQuery.get("http://localhost:2019/api/insertdata?insdata=" + jQuery("#insertModal").val()+"&dbmdl="+window.dbConfig["db_name"],function(data) {
+            jQuery.get("https://null-server.herokuapp.com/api/insertdata?insdata=" + jQuery("#insertModal").val()+"&dbmdl="+window.dbConfig["db_name"],function(data) {
                 jQuery("#insertModal").hide();
                 jQuery(".overlay").hide();
                 $.notify({
@@ -664,7 +664,7 @@
         jQuery("#dbSettingsPopup").show();
         jQuery(".overlay").show();
         jQuery("#first-db").text(window.dbConfig["db_name"]);
-        jQuery.get("http://localhost:2019/api/getdblist", function (data) {
+        jQuery.get("https://null-server.herokuapp.com/api/getdblist", function (data) {
             jQuery("#dblist li").each(function(){
                     jQuery(this).remove();
                 });
