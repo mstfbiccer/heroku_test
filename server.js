@@ -30,7 +30,7 @@ app.get('/api/getdblist',function(req,res) {
   var allDatabases = [];
   /// create a connection to the DB    
   var connection = mongoose.createConnection(
-    'mongodb://mustafabicer:662866mb@ds115166.mlab.com:15166/heroku_zn0dfglw/first_collection');
+    'mongodb://mustafabicer:662866mb@ds115166.mlab.com:15166/movie_test/first_collection');
   connection.on('open', function() {
     // connection established
     new Admin(connection.db).listDatabases(function(err, result) {
@@ -43,7 +43,7 @@ app.get('/api/getdblist',function(req,res) {
   });
 });
 app.get('/api/setdata', function (req, res) {
-  mongoose.connect('mongodb://mustafabicer:662866mb@ds115166.mlab.com:15166/heroku_zn0dfglw', { useMongoClient: true, promiseLibrary: global.Promise });
+  mongoose.connect('mongodb://mustafabicer:662866mb@ds115166.mlab.com:15166/movie_test', { useMongoClient: true, promiseLibrary: global.Promise });
   if (req.query.url != "" && req.query.dbmdl != "") {
     getJSON(req.query.url, function (error, response) {
       for (var i = 0; i < response.length; i++) {
@@ -118,7 +118,7 @@ app.get('/api/insertdata', function (req, res) {
 });
 app.get('/api/get', function (req, res) {
   if (req.query.key != "" && req.query.value != "" && req.query.dbmdl != "") {
-		mongoose.connect('mongodb://mustafabicer:662866mb@ds115166.mlab.com:15166/heroku_zn0dfglw', { useMongoClient: true, promiseLibrary: global.Promise });
+		mongoose.connect('mongodb://mustafabicer:662866mb@ds115166.mlab.com:15166/movie_test', { useMongoClient: true, promiseLibrary: global.Promise });
     var query={};
     query[req.query.key]=new RegExp('.*'+req.query.value+'.*');
     movie.find(query).exec(function (err, doc) {
@@ -128,7 +128,7 @@ app.get('/api/get', function (req, res) {
     });
     
   }else if(req.query.dbmdl != ""){
-    mongoose.connect('mongodb://mustafabicer:662866mb@ds115166.mlab.com:15166/heroku_zn0dfglw', { useMongoClient: true, promiseLibrary: global.Promise });
+    mongoose.connect('mongodb://mustafabicer:662866mb@ds115166.mlab.com:15166/movie_test', { useMongoClient: true, promiseLibrary: global.Promise });
     movie.where("id").exec(function (err, doc) {
       
        res.status(200)
@@ -142,7 +142,7 @@ app.get('/api/get', function (req, res) {
 app.get('/api/deletedata', function (req, res) {
   
     if (req.query.id != "" && req.query.dbmdl != "") {
-      mongoose.connect('mongodb://mustafabicer:662866mb@ds115166.mlab.com:15166/heroku_zn0dfglw', { useMongoClient: true, promiseLibrary: global.Promise });
+      mongoose.connect('mongodb://mustafabicer:662866mb@ds115166.mlab.com:15166/movie_test', { useMongoClient: true, promiseLibrary: global.Promise });
       var query={};
       query["id"]=new RegExp(req.query.id);
       movie.remove(query).exec(function (err, doc) {
