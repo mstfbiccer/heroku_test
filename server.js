@@ -26,6 +26,8 @@ var movie = mongoose.model('Movie', {
 });
 
 app.get('/api/getdblist',function(req,res) {
+  res.status(200)
+    .send("Yapım aşamasında ! ");
   Admin = mongoose.mongo.Admin;
   var allDatabases = [];
   /// create a connection to the DB    
