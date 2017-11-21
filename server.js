@@ -154,8 +154,8 @@ app.get('/api/deletedata', function (req, res) {
     }
   
   });
-  app.listen(process.env.PORT || 3000, function(){
-    console.log('listening on', app.address().port);
-  });
-  
-  
+app.listen(process.env.PORT || 3000, function(){
+  console.log('listening on');
+});
+
+
