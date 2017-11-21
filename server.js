@@ -29,7 +29,7 @@ app.get('/api/getdblist',function(req,res) {
   var allDatabases = [];
   /// create a connection to the DB    
   var connection = mongoose.createConnection(
-    'mongodb://null-server.herokuapp.com/mstfbiccer2');
+    'mongodb://heroku_zn0dfglw/mstfbiccer2');
   connection.on('open', function() {
     // connection established
     new Admin(connection.db).listDatabases(function(err, result) {
@@ -42,7 +42,7 @@ app.get('/api/getdblist',function(req,res) {
   });
 });
 app.get('/api/setdata', function (req, res) {
-  mongoose.connect('mongodb://null-server.herokuapp.com/'+req.query.dbmdl, { useMongoClient: true, promiseLibrary: global.Promise });
+  mongoose.connect('mongodb://heroku_zn0dfglw/'+req.query.dbmdl, { useMongoClient: true, promiseLibrary: global.Promise });
   if (req.query.url != "" && req.query.dbmdl != "") {
     getJSON(req.query.url, function (error, response) {
       for (var i = 0; i < response.length; i++) {
@@ -118,7 +118,7 @@ app.get('/api/insertdata', function (req, res) {
 app.get('/api/get', function (req, res) {
 
   if (req.query.key != "" && req.query.value != "" && req.query.dbmdl != "") {
-		mongoose.connect('mongodb://null-server.herokuapp.com/'+req.query.dbmdl, { useMongoClient: true, promiseLibrary: global.Promise });
+		mongoose.connect('mongodb://heroku_zn0dfglw/'+req.query.dbmdl, { useMongoClient: true, promiseLibrary: global.Promise });
     var query={};
     query[req.query.key]=new RegExp('.*'+req.query.value+'.*');
     movie.find(query).exec(function (err, doc) {
@@ -128,7 +128,7 @@ app.get('/api/get', function (req, res) {
     });
     
   }else if(req.query.dbmdl != ""){
-    mongoose.connect('mongodb://null-server.herokuapp.com/'+req.query.dbmdl, { useMongoClient: true, promiseLibrary: global.Promise });
+    mongoose.connect('mongodb://heroku_zn0dfglw/'+req.query.dbmdl, { useMongoClient: true, promiseLibrary: global.Promise });
     movie.where("id").exec(function (err, doc) {
       
        res.status(200)
@@ -142,7 +142,7 @@ app.get('/api/get', function (req, res) {
 app.get('/api/deletedata', function (req, res) {
   
     if (req.query.id != "" && req.query.dbmdl != "") {
-      mongoose.connect('mongodb://null-server.herokuapp.com/'+req.query.dbmdl, { useMongoClient: true, promiseLibrary: global.Promise });
+      mongoose.connect('mongodb://heroku_zn0dfglw/'+req.query.dbmdl, { useMongoClient: true, promiseLibrary: global.Promise });
       var query={};
       query["id"]=new RegExp(req.query.id);
       movie.remove(query).exec(function (err, doc) {
