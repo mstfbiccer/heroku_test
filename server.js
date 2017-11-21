@@ -117,8 +117,6 @@ app.get('/api/insertdata', function (req, res) {
   }
 });
 app.get('/api/get', function (req, res) {
-  res.status(200)
-  .send("Hello world;"); 
   if (req.query.key != "" && req.query.value != "" && req.query.dbmdl != "") {
 		mongoose.connect('mongodb://@ds115166.mlab.com:15166/'+req.query.dbmdl, { useMongoClient: true, promiseLibrary: global.Promise });
     var query={};
